@@ -16,14 +16,16 @@
 
         <div>
             <img class="melon-img" src="{{ melon.image_url }}">
-            <p>{{ melon.price }}</p>
+            <p>{{ melon.price_str() }}</p>
             <p>{{ melon.color }}</p>
-            {{% if melon.seedless = true %}}
+            {% if melon.seedless %}
                 <p>Warning: This melon has seeds!</p>
-            {{% endif %}}
+            {% else %}
+                <li>This melon is seedy!</li>
+            {% endif %}
         </div>
 
-        <a class="btn btn-primary" href="{{ url_for('add_to_cart'), melon_id=melon.melon_id}}">Add to Cart</a>
+        <a class="btn btn-primary" href="{{ url_for('add_to_cart', melon_id=melon.melon_id) }}">Add to Cart</a>
     {% endblock %}
 </body>
 </html>
